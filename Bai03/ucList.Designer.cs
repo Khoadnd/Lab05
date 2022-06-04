@@ -40,7 +40,7 @@ namespace Bai03
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(451, 349);
+            this.treeView1.Size = new System.Drawing.Size(162, 186);
             this.treeView1.TabIndex = 0;
             this.treeView1.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView1_BeforeSelect);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -50,9 +50,9 @@ namespace Bai03
             this.btnAddUser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnAddUser.FlatAppearance.BorderSize = 0;
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.Location = new System.Drawing.Point(0, 326);
+            this.btnAddUser.Location = new System.Drawing.Point(0, 163);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(451, 23);
+            this.btnAddUser.Size = new System.Drawing.Size(162, 23);
             this.btnAddUser.TabIndex = 1;
             this.btnAddUser.Text = "+ Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
@@ -65,7 +65,7 @@ namespace Bai03
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.treeView1);
             this.Name = "ucList";
-            this.Size = new System.Drawing.Size(451, 349);
+            this.Size = new System.Drawing.Size(162, 186);
             this.ResumeLayout(false);
 
         }

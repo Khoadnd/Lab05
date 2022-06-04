@@ -32,8 +32,9 @@ namespace Bai03
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.userControl1 = new Bai03.ucList();
+            this.btnNewMail = new System.Windows.Forms.Button();
             this.userControl2 = new Bai03.ucView();
+            this.userControl1 = new Bai03.ucList();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,6 +50,7 @@ namespace Bai03
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.userControl1);
+            this.splitContainer1.Panel1.Controls.Add(this.btnNewMail);
             // 
             // splitContainer1.Panel2
             // 
@@ -57,15 +59,16 @@ namespace Bai03
             this.splitContainer1.SplitterDistance = 155;
             this.splitContainer1.TabIndex = 0;
             // 
-            // userControl1
+            // btnNewMail
             // 
-            this.userControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl1.Location = new System.Drawing.Point(0, 0);
-            this.userControl1.Name = "userControl1";
-            this.userControl1.Node = null;
-            this.userControl1.Size = new System.Drawing.Size(155, 538);
-            this.userControl1.TabIndex = 0;
-            this.userControl1.Users = ((System.Collections.Hashtable)(resources.GetObject("userControl1.Users")));
+            this.btnNewMail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNewMail.Location = new System.Drawing.Point(0, 0);
+            this.btnNewMail.Name = "btnNewMail";
+            this.btnNewMail.Size = new System.Drawing.Size(155, 23);
+            this.btnNewMail.TabIndex = 1;
+            this.btnNewMail.Text = "New mail";
+            this.btnNewMail.UseVisualStyleBackColor = true;
+            this.btnNewMail.Click += new System.EventHandler(this.btnNewMail_Click);
             // 
             // userControl2
             // 
@@ -74,6 +77,16 @@ namespace Bai03
             this.userControl2.Name = "userControl2";
             this.userControl2.Size = new System.Drawing.Size(1050, 538);
             this.userControl2.TabIndex = 0;
+            // 
+            // userControl1
+            // 
+            this.userControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl1.Location = new System.Drawing.Point(0, 23);
+            this.userControl1.Name = "userControl1";
+            this.userControl1.Node = null;
+            this.userControl1.Size = new System.Drawing.Size(155, 515);
+            this.userControl1.TabIndex = 2;
+            this.userControl1.Users = ((System.Collections.Hashtable)(resources.GetObject("userControl1.Users")));
             // 
             // Main
             // 
@@ -97,6 +110,7 @@ namespace Bai03
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         public ucView userControl2;
+        private System.Windows.Forms.Button btnNewMail;
         public ucList userControl1;
     }
 }

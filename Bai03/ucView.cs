@@ -26,6 +26,7 @@ namespace Bai03
             _username = username;
             _password = password;
             _folder = folder;
+            pageSelector.Value = 1;
         }
 
         public async Task PopulateList()
@@ -44,6 +45,11 @@ namespace Bai03
                 _password,
                 _folder
             };
+            while (backgroundWorker.IsBusy)
+            {
+                Console.WriteLine(@"Waiting backgroundworker... @ucView.PopulateList");
+                Thread.Sleep(100);
+            }
             await Task.Run(() => backgroundWorker.RunWorkerAsync(arguments));
         }
 
@@ -52,7 +58,7 @@ namespace Bai03
             var genericArguments = e.Argument as List<object>;
             var arguments = genericArguments?.Cast<string>().ToList();
             lstListMail.Items.Clear();
-            var backgroundWorker = sender as BackgroundWorker;
+            var backgroundWorker = sender as AbortableBackgroundWorker;
             try
             {
                 using (var client = new ImapClient())
@@ -66,8 +72,6 @@ namespace Bai03
                     if (folder == null)
                     {
                         client.Disconnect(true);
-                        e.Cancel = true;
-                        Thread.ResetAbort();
                         return;
                     }
                     folder.Open(FolderAccess.ReadOnly);
@@ -76,6 +80,11 @@ namespace Bai03
 
                     lblTotal.Text = @"Total: " + folder.Count.ToString();
                     lblRecent.Text = @"Recent: " + folder.Recent.ToString();
+                    if (folder.Count == 0)
+                    {
+                        MessageBox.Show(@"Folder is empty!");
+                        return;
+                    }
                     pageSelector.Maximum = decimal.Ceiling((decimal)folder.Count / 50);
 
                     var start = (pageSelector.Value - 1) * 50;
@@ -125,9 +134,43 @@ namespace Bai03
             {
                 Console.WriteLine(@"Background worker currently busy, waiting... @ucView::pageSelector");
                 Thread.Sleep(100);
-                backgroundWorker.Abort();
             }
             await PopulateList();
+        }
+
+        private void lstListMail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                lstListMail.Enabled = false;
+                webBrowser1.DocumentText = @"Loading...";
+                if (lstListMail.SelectedItems.Count <= 0)
+                    return;
+
+                var selectedIndex = lstListMail.SelectedIndices[0];
+                if (selectedIndex >= 0)
+                {
+                    var imapClient = new ImapClient();
+                    imapClient.Connect("imap.gmail.com", 993, true);
+                    imapClient.Authenticate(_username, _password);
+
+                    var folder = imapClient.GetFolder(_folder);
+                    folder.Open(FolderAccess.ReadOnly);
+                    var min = ((int)pageSelector.Value - 1) * 50;
+                    var items = folder.Fetch(min, min + 50 > folder.Count ? folder.Count : min + 50,
+                        MessageSummaryItems.UniqueId);
+                    var message = folder.GetMessage(items[selectedIndex].UniqueId);
+                    if (message == null)
+                    {
+                        MessageBox.Show(@"Can't retrieve message!");
+                        return;
+                    }
+
+                    webBrowser1.DocumentText = message.HtmlBody + message.TextBody;
+                }
+                lstListMail.Enabled = true;
+            }
+            );
         }
     }
 }

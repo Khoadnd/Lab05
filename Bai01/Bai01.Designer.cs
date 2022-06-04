@@ -54,6 +54,7 @@
             this.label1.Size = new System.Drawing.Size(48, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "From:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -64,6 +65,7 @@
             this.label2.Size = new System.Drawing.Size(30, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "To:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -74,6 +76,7 @@
             this.label3.Size = new System.Drawing.Size(79, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Password:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnSend
             // 
@@ -102,6 +105,7 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(10);
             this.panel1.Size = new System.Drawing.Size(800, 69);
             this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtPassword
             // 
@@ -113,6 +117,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(178, 20);
             this.txtPassword.TabIndex = 6;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtTo
             // 
@@ -127,6 +132,7 @@
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(178, 20);
             this.txtTo.TabIndex = 5;
+            this.txtTo.TextChanged += new System.EventHandler(this.txtTo_TextChanged);
             // 
             // txtFrom
             // 
@@ -141,6 +147,7 @@
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(178, 20);
             this.txtFrom.TabIndex = 4;
+            this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
             // 
             // panel2
             // 
@@ -153,6 +160,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 381);
             this.panel2.TabIndex = 5;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtBody
             // 
@@ -161,6 +169,7 @@
             this.txtBody.Size = new System.Drawing.Size(697, 307);
             this.txtBody.TabIndex = 3;
             this.txtBody.Text = "Hi,\n\nI\'m sending this using C#!\n\nBye.";
+            this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // label5
             // 
@@ -171,6 +180,7 @@
             this.label5.Size = new System.Drawing.Size(46, 18);
             this.label5.TabIndex = 2;
             this.label5.Text = "Body:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtSubject
             // 
@@ -179,6 +189,7 @@
             this.txtSubject.Size = new System.Drawing.Size(697, 20);
             this.txtSubject.TabIndex = 1;
             this.txtSubject.Text = "Hi";
+            this.txtSubject.TextChanged += new System.EventHandler(this.txtSubject_TextChanged);
             // 
             // label4
             // 
@@ -189,8 +200,9 @@
             this.label4.Size = new System.Drawing.Size(61, 18);
             this.label4.TabIndex = 0;
             this.label4.Text = "Subject:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // Bai1
+            // Bai01
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -199,7 +211,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Bai1";
+            this.Name = "Bai01";
             this.Text = "Bai1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

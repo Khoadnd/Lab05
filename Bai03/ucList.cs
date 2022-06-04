@@ -59,20 +59,19 @@ namespace Bai03
                 MessageBox.Show(@"Already added");
                 return;
             }
-            Users.Add(username, password);
-            treeView1.Nodes.Add(username, username);
-            _unselectableNodes.Add(treeView1.Nodes[username]);
 
             var imapClient = new ImapClient();
             await imapClient.ConnectAsync("imap.gmail.com", 993, true);
             await imapClient.AuthenticateAsync(username, password);
 
+            Users.Add(username, password);
+            treeView1.Nodes.Add(username, username);
+            _unselectableNodes.Add(treeView1.Nodes[username]);
+
             var folders = await imapClient.GetFoldersAsync(imapClient.PersonalNamespaces[0]);
 
             foreach (var folder in folders)
-            {
                 treeView1.Nodes[username].Nodes.Add(folder.Name);
-            }
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

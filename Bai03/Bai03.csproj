@@ -78,6 +78,12 @@
     <Compile Include="AbortableBackgroundWorker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="wfNewMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wfNewMail.Designer.cs">
+      <DependentUpon>wfNewMail.cs</DependentUpon>
+    </Compile>
     <Compile Include="wfAddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="ucView.Designer.cs">
       <DependentUpon>ucView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="wfNewMail.resx">
+      <DependentUpon>wfNewMail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="wfAddUser.resx">
       <DependentUpon>wfAddUser.cs</DependentUpon>
     </EmbeddedResource>

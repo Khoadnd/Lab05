@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Bai03
 {
     public partial class Main : Form
     {
+        private Hashtable Users { get => userControl1.Users;
+            set => userControl1.Users = value;
+        }
         public Main()
         {
             InitializeComponent();
+        }
+
+        private void btnNewMail_Click(object sender, EventArgs e)
+        {
+            if (Users.Count == 0)
+            {
+                MessageBox.Show(@"Add user first!");
+                return;
+            }
+
+            var newMail = new wfNewMail(Users);
+            newMail.Show();
         }
     }
 }
