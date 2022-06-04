@@ -34,7 +34,7 @@ namespace Bai03
                 email.From.Add(MailboxAddress.Parse(_userName));
                 email.To.Add(MailboxAddress.Parse(txtTo.Text.Trim()));
                 email.Subject = txtSubject.Text;
-                email.Body = new TextPart(TextFormat.RichText) { Text = rtxtBody.Text.Trim() };
+                email.Body = new TextPart(TextFormat.Text) { Text = rtxtBody.Text.Trim() };
 
                 using (var smtp = new SmtpClient())
                 {
